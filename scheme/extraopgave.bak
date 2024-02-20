@@ -1,0 +1,12 @@
+(define globalvar '())
+
+(define my-remove
+  (lambda pointer newpointer
+    
+    )
+  )
+
+
+(define pointer (5 ()))
+(set! globalvar '(7 (3 (5 ()))))
+(my-remove pointer '())

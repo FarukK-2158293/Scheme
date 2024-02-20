@@ -1,0 +1,8 @@
+
+(define carprod
+  (lambda (l1 l2)
+    
+    )
+  )
+
+(carprod '((a b) (c d)) '((e f) (g h)))

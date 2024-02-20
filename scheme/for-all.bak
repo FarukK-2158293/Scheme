@@ -1,0 +1,8 @@
+(define (for-all lst p)
+
+  )
+
+
+(for-all '(2 4 6) even?) ; -> #t
+(for-all '(1 2 3) even?) ; -> #f
+(for-all '() even?) ; -> #t

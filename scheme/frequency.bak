@@ -1,0 +1,29 @@
+(define (freqhelper lst val)
+  (cond
+    ((null? lst) (list (list val 1)))
+    ((eq? (car (cdr (car lst))) val) (cons (cons (+ (car (car lst)) 1) (list val)) (cdr lst)))
+    (else (cons (car lst) (freqhelper (cdr lst) val)))
+    )
+  )
+
+(define (frequency l col)
+  (cond
+    ((null? l) (col '()))
+    (else
+     (frequence (cdr l) (lambda (lst) (col (freqhelper lst (car l)))))
+     )
+   )
+  )
+
+(define (max-finder lst)
+
+  )
+
+(define (min-finder lst)
+
+  )
+
+(freqhelper '((1 c) (3 b) (1 d) (3 a)) 'a)
+
+;(frequency '(a b c a b d a b) max-finder)
+;(frequency '(a b c a b a) min-finder)

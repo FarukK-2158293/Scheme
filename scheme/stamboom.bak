@@ -1,0 +1,39 @@
+(define (count-persons p)
+  (cond
+    ((null? p) 0) ; Als de stamboom leeg is, is het aantal personen 0.
+    (else
+     (+ 1 ; Tel de huidige persoon
+        (count-persons (cdr p)) ; Tel de rest van de stamboom
+        (if (not (eq? 'unknown (cadr p))) 1 0) ; Tel de partner als deze niet 'unknown' is
+        (apply + (map count-persons (cddr p)))))) ; Tel de kinderen
+  )
+
+(define (average-age year p)
+  (define (calculate-age birth-year)
+    (- year birth-year))
+
+  (define (average lst)
+    (/ (apply + lst) (length lst)))
+
+  (define (get-birth-years persons)
+    (if (null? persons)
+        '()
+        (cons (cadr (car persons))
+              (get-birth-years (cdr persons)))))
+
+  (let ((birth-years (get-birth-years p)))
+    (average (map calculate-age birth-years))
+    )
+  )
+
+(define (eye-colors p)
+  (define (get-eye-colors persons)
+    (if (null? persons)
+        '()
+        (cons (caddr (car persons))
+              (get-eye-colors (cdr persons)))))
+
+  (let ((colors (get-eye-colors p)))
+    (remove-duplicates colors)
+    )
+  )

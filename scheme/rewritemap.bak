@@ -1,0 +1,30 @@
+(define atom?
+  (lambda (x)
+    (and (not (pair? x)) (not (null? x))
+    )
+  )
+)
+
+(define (reduce-right op lst)
+  (cond
+    ((null? (cdr lst)) (list (op (car lst))))
+    (else (cons (op (car lst)) (reduce-right op (cdr lst))))))
+
+(define (foldr op lst)
+  (reduce-right op lst)
+  )
+
+
+(define (foldl op lst)
+  (reduce-help-left op lst '()))
+
+(define (reduce-help-left op lst col)
+  (cond
+    ((null? lst) col)
+    (else
+     (reduce-help-left op (cdr lst) (append (list col) (op (car lst)))))))
+
+(foldr atom? '((a) (b) c (d) (e) f))
+(foldl atom? '((a) (b) c (d) (e) f))
+(foldr (lambda (x) (* 2 x)) '(1 2 3 4))
+(foldl (lambda (x) (* 2 x)) '(1 2 3 4))

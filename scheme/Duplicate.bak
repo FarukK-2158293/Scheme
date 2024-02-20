@@ -1,0 +1,9 @@
+(define dublicate
+  (lambda nondub
+    )
+)
+
+
+
+(define nondub '(a b c))
+(display (duplicate nondub))
